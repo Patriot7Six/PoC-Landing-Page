@@ -75,7 +75,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Patriot Ops Center <noreply@email.patriot-ops.com>',
+        from: 'Bradley Baker at Patriot Ops Center <noreply@email.patriot-ops.com>',
         to: email,
         subject: 'Welcome to the Patriot Ops Center Waitlist!',
         html: getWaitlistEmailHtml(email),
