@@ -199,8 +199,11 @@ function getWaitlistEmailHtml(email: string): string {
                 &bull;
                 <a href="https://poc-landing-page-five.vercel.app/privacy" style="color: #d4af37; text-decoration: none;">Privacy Policy</a>
               </p>
-              <p style="color: #4b5563; font-size: 11px; margin: 0;">
+              <p style="color: #4b5563; font-size: 11px; margin: 0 0 12px 0;">
                 You're receiving this email because ${email} signed up for the Patriot Ops Center waitlist.
+              </p>
+              <p style="color: #4b5563; font-size: 11px; margin: 0;">
+                <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #6b7280; text-decoration: underline;">Unsubscribe</a>
               </p>
             </td>
           </tr>
