@@ -4,7 +4,13 @@
       "Bash(git init:*)",
       "Bash(git remote add:*)",
       "Bash(npm install:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(vercel logs:*)",
+      "Bash(vercel ls:*)",
+      "Bash(vercel build)",
+      "Bash(vercel pull:*)",
+      "Bash(vercel --prod:*)",
+      "Bash(vercel inspect:*)"
     ]
   }
 }
