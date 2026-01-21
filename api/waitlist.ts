@@ -1,4 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { render } from '@react-email/components'
+import WaitlistConfirmation from './emails/WaitlistConfirmation'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID
@@ -58,6 +60,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'Failed to join waitlist. Please try again.' })
     }
 
+    // Render the React Email template
+    const emailHtml = await render(WaitlistConfirmation({ email }))
+
     // Send confirmation email
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -69,36 +74,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         from: 'Patriot Ops Center <noreply@patriot-ops.com>',
         to: email,
         subject: 'Welcome to the Patriot Ops Center Waitlist!',
-        html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h1 style="color: #1a1a1a;">You're on the list!</h1>
-            <p style="color: #333; font-size: 16px; line-height: 1.6;">
-              Thank you for joining the Patriot Ops Center waitlist. We're building an AI-powered
-              career transition platform specifically designed for military veterans like you.
-            </p>
-            <p style="color: #333; font-size: 16px; line-height: 1.6;">
-              We'll notify you as soon as we launch so you can be among the first to:
-            </p>
-            <ul style="color: #333; font-size: 16px; line-height: 1.8;">
-              <li>Upload your DD214 and have AI extract your skills</li>
-              <li>Translate your MOS into civilian career matches</li>
-              <li>Generate ATS-optimized resumes</li>
-              <li>Get matched with federal and civilian jobs</li>
-            </ul>
-            <p style="color: #333; font-size: 16px; line-height: 1.6;">
-              Your service matters. Your skills are valuable. We're here to help you prove it.
-            </p>
-            <p style="color: #666; font-size: 14px; margin-top: 30px;">
-              — Bradley Baker<br/>
-              U.S. Army Veteran & Founder<br/>
-              Patriot Ops Center
-            </p>
-            <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;" />
-            <p style="color: #999; font-size: 12px;">
-              This We'll Defend — Your mission does not end with service, it evolves.
-            </p>
-          </div>
-        `,
+        html: emailHtml,
       }),
     })
 
