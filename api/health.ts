@@ -1,11 +1,6 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default function handler(req: any, res: any) {
   return res.status(200).json({
     status: 'ok',
-    env: {
-      hasResendKey: !!process.env.RESEND_API_KEY,
-      hasAudienceId: !!process.env.RESEND_AUDIENCE_ID
-    }
+    timestamp: new Date().toISOString()
   })
 }
