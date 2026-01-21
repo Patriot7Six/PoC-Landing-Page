@@ -1,8 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY
-const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID
-
 interface WaitlistRequest {
   email: string
 }
@@ -19,6 +16,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!email || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Please provide a valid email address' })
   }
+
+  const RESEND_API_KEY = process.env.RESEND_API_KEY
+  const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID
 
   if (!RESEND_API_KEY) {
     console.error('RESEND_API_KEY not configured')
