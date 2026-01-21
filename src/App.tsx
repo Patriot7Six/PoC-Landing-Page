@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
@@ -7,8 +8,55 @@ import AIShowcase from './components/AIShowcase'
 import Founder from './components/Founder'
 import WaitlistCTA from './components/WaitlistCTA'
 import Footer from './components/Footer'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import CookiePolicy from './pages/CookiePolicy'
 
 function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname)
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname)
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  // Handle navigation
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      const anchor = target.closest('a')
+      if (anchor && anchor.href.startsWith(window.location.origin)) {
+        const path = new URL(anchor.href).pathname
+        if (path !== currentPath) {
+          e.preventDefault()
+          window.history.pushState({}, '', path)
+          setCurrentPath(path)
+          window.scrollTo(0, 0)
+        }
+      }
+    }
+
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [currentPath])
+
+  // Render based on path
+  if (currentPath === '/privacy') {
+    return <PrivacyPolicy />
+  }
+
+  if (currentPath === '/terms') {
+    return <TermsOfService />
+  }
+
+  if (currentPath === '/cookies') {
+    return <CookiePolicy />
+  }
+
   return (
     <div className="min-h-screen bg-navy-950">
       <div className="fixed inset-0 bg-grid-pattern pointer-events-none" />

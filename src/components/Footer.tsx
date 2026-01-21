@@ -15,6 +15,7 @@ export default function Footer() {
     legal: [
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Terms of Service', href: '/terms' },
+      { label: 'Cookie Policy', href: '/cookies' },
     ],
   }
 
@@ -91,7 +92,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-navy-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-navy-500 text-sm">
-            &copy; {currentYear} Patriot Ops Center. All rights reserved.
+            &copy; {currentYear} Patriot 7Six LLC. All rights reserved.
           </p>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-navy-900/60 rounded-full border border-navy-800">
             <div className="flex gap-0.5">
