@@ -141,7 +141,7 @@ function getSuccessHtml(): string {
     </div>
     <h1>You've been unsubscribed</h1>
     <p>You will no longer receive emails from the Patriot Ops Center waitlist. We're sorry to see you go.</p>
-    <p><a href="https://poc-landing-page-five.vercel.app">Return to website</a></p>
+    <p><a href="https://www.patriot-ops.com/">Return to website</a></p>
   </div>
 </body>
 </html>
