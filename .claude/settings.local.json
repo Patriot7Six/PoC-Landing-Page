@@ -10,7 +10,8 @@
       "Bash(vercel build)",
       "Bash(vercel pull:*)",
       "Bash(vercel --prod:*)",
-      "Bash(vercel inspect:*)"
+      "Bash(vercel inspect:*)",
+      "Bash(find:*)"
     ]
   }
 }

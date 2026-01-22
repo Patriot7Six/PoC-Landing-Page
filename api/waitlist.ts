@@ -203,7 +203,7 @@ function getWaitlistEmailHtml(email: string): string {
                 You're receiving this email because ${email} signed up for the Patriot Ops Center waitlist.
               </p>
               <p style="color: #4b5563; font-size: 11px; margin: 0;">
-                <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #6b7280; text-decoration: underline;">Unsubscribe</a>
+                <a href="https://poc-landing-page-five.vercel.app/api/unsubscribe?email=${encodeURIComponent(email)}" style="color: #6b7280; text-decoration: underline;">Unsubscribe</a>
               </p>
             </td>
           </tr>
