@@ -215,7 +215,7 @@ function getErrorHtml(message: string): string {
     </div>
     <h1>Something went wrong</h1>
     <p>${message}. Please try again or contact support.</p>
-    <p><a href="https://poc-landing-page-five.vercel.app">Return to website</a></p>
+    <p><a href="https://www.patriot-ops.com/">Return to website</a></p>
   </div>
 </body>
 </html>
