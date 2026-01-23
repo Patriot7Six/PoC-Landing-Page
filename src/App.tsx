@@ -5,6 +5,7 @@ import Stats from './components/Stats'
 import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
 import AIShowcase from './components/AIShowcase'
+import FAQ from './components/FAQ'
 import Founder from './components/Founder'
 import WaitlistCTA from './components/WaitlistCTA'
 import Footer from './components/Footer'
@@ -70,6 +71,7 @@ function App() {
           <Features />
           <HowItWorks />
           <AIShowcase />
+          <FAQ />
           <Founder />
           <WaitlistCTA />
         </main>
